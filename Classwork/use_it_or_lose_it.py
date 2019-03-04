@@ -150,7 +150,5 @@ def distance(first, second):
     deletion = distance(first[1:], second)
     insertion = distance(first, second[1:])
     return 1 + min(substitution, deletion, insertion)
-
-print(distance('humbuger', 'hamburger'))
         
     
