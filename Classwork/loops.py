@@ -36,12 +36,12 @@ def shallow_copy_list_comp(lst):
 
 # Aliasing: if L = [1, 2, 3], and M = L, point to same thing.
 # What would happen?
-L = [1, 2, 3]
-M = shallow_copy(L)
-L[0] = 11
-print(L)
-print(M)
-print(id(L[1]), id(M[1]))
+# L = [1, 2, 3]
+# M = shallow_copy(L)
+# L[0] = 11
+# print(L)
+# print(M)
+# print(id(L[1]), id(M[1]))
 # Different lists, but since index 1 holds the same value, points to same place.
 
 def deep_copy(lst):
@@ -73,10 +73,58 @@ def addall2(board):
             total += board[i][j]
     return total
 
+def sequential_search(lst, key):
+    """
+    Returns the index at which a particular key is found in a list. If it is not found,
+    will return -1.
+    """
+    for i in range(len(lst)):
+        if lst[i] == key:
+            return i
+    return -1
+
+def binary_search(lst, key):
+    """
+    
+    """
+    low = 0
+    high = len(lst) - 1
+    while low <= high:
+        # prevents bug of integer overflow on huge numbers
+        mid = low + (high - low) // 2
+        if lst[mid] == key:
+            return mid
+        if lst[mid] < key:
+            low = mid + 1
+        else:
+            high = mid + 1
+    return -low - 1
+
 board = [
     [3,0,1],
     [2,5,6],
     [-9,8,7],
     [1,2,3],
 ]
-print(addall2(board))
+
+def swap(lst, a, b):
+    """
+    swaps the elements in lst at indexes a and b
+    """
+    temp = lst[a]
+    lst[a] = lst[b]
+    lst[b] = temp
+    
+def selection_sort(lst):
+    """
+    
+    """
+    n = len(lst)
+    for i in range(n - 1):
+        min_index = i
+        for j in range(i + 1, n):
+            if lst[j] < lst[min_index]:
+                min_index = j
+        if min_index != i:
+            swap(lst, i, min_index)
+
