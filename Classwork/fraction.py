@@ -98,7 +98,9 @@ class Fraction(object):
         Returns:
             a new Fraction object resulting from the multiplication
         '''
-        pass
+        num = self.__numerator * other.__numerator
+        den = self.__denominator * other.__denominator
+        return Fraction(num, den)
 
     def __truediv__(self, other):
         '''Divides this fraction by another fraction.
@@ -109,7 +111,9 @@ class Fraction(object):
         Returns:
             a new Fraction object resulting from the division
         '''
-        pass
+        num = self.__numerator * other.__denominator
+        den = self.__denominator * other.__numerator
+        return Fraction(num, den)
 
     def __lt__(self, other):
         '''Determines if this fraction is less than another fraction.
@@ -120,7 +124,8 @@ class Fraction(object):
         Returns:
             True if this fraction is less than the other, False otherwise
         '''
-        pass
+        return self.__numerator * other.__denominator < \
+            self.__denominator * other.__numerator
 
     def __ne__(self, other):
         '''Determines if this fraction is not equal to another fraction.
@@ -131,7 +136,7 @@ class Fraction(object):
         Returns:
             True if the fractions are not equal, False otherwise
         '''
-        pass
+        return not self == other
 
     def __le__(self, other):
         '''Determines if this fraction is less than or equal to another fraction.
@@ -143,7 +148,7 @@ class Fraction(object):
             True if this fraction is less than or equal to the other, False
             otherwise
         '''
-        pass
+        return not other < self
 
     def __gt__(self, other):
         '''Determines if this fraction is greater than another fraction.
@@ -154,7 +159,7 @@ class Fraction(object):
         Returns:
             True if this fraction is greater than the other, False otherwise
         '''
-        pass
+        return other < self
 
     def __ge__(self, other):
         '''Determines if this fraction is greater than or equal to another
@@ -167,7 +172,7 @@ class Fraction(object):
             True if this fraction is greater than or equal to the other, False
             otherwise
         '''
-        pass
+        return not self < other
 
     def __float__(self):
         '''Converts a fraction to a floating-point number.
@@ -175,7 +180,7 @@ class Fraction(object):
         Returns:
             the floating-point value of this fraction
         '''
-        pass
+        return self.__numerator / self.__denominator
 
     def __repr__(self):
         '''Gets an official string representation of the fraction.
@@ -183,7 +188,8 @@ class Fraction(object):
         Returns:
             a string in the format Fraction(numerator, denominator)
         '''
-        pass
+        return self.__class__.__name__ + '(' + str(self.__numerator) + \
+            ', ' + str(self.__denominator) + ')'
 
     def __str__(self):
         '''Gets a user-friendly string representation of the fraction.
@@ -196,5 +202,19 @@ class Fraction(object):
 if __name__ == '__main__':
     f = Fraction(2, 4)
     print(f)
-    g = Fraction(3, 5)
-    print(f+g)
+    g = Fraction(3, 6)
+    print(g)
+    print(f == g)
+    print(f + g)
+    print(Fraction(1, 2) * Fraction(3, 5))
+    print(Fraction(20, 5) / Fraction(2, 1))
+    print(f <= g)
+    print(f < g)
+    print(f >= g)
+    print(f > g)
+    h = Fraction(1, 3)
+    print(float(h))
+    print(repr(h))
+    print(h)
+    print(Fraction.__init__.__doc__)
+    lst = 
